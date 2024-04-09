@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    # Nomeia o conteiner, assim facilitando outros conteineres de encontrar.
+    container_name: db_movie
+    # Cria a imagem com base no Dockerfile
+    build:
+      context: .
+      dockerfile: db/Dockerfile
+    # O sistema do conteiner ira subir sozinho toda vez que o SO for reiniciado
+    restart: always
+    # Expondo a porta do conteiner
+    ports:
+      - '3306:3306'
+    
+    networks:
+      desenvolvimento:
+        ipv4_address: 172.20.0.3
+
+  movie:
+    container_name: movie_nginx
+
+    build:
+      context: .
+      dockerfile: back/Dockerfile
+
+    restart: always
+
+    depends_on:
+      - db
+    
+    ports:
+      - '8080:80'
+
+    networks:
+      desenvolvimento:
+        ipv4_address: 172.20.0.4
+
+networks:
+  desenvolvimento:
+    driver: bridge
+    external: true
+
