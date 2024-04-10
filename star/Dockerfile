@@ -34,13 +34,13 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 
 # Criando o diretorio padrao de trabalho
-RUN mkdir -p /var/www/html/moveis_star/
+RUN mkdir -p /var/www/html/star/
 
 # Defina o diretório de trabalho para onde está o seu composer.json
-WORKDIR /var/www/html/moveis_star/
+WORKDIR /var/www/html/star/
 
 # Copia tudo para dentro da pasta 
-COPY ./back/ /var/www/html/moveis_star/
+COPY ./star/ /var/www/html/star/
 
 # Expose a porta 80 para acessar o Apache
 EXPOSE 80

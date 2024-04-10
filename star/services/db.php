@@ -1,7 +1,7 @@
 <?php
 
     $db_name = "movieStar";
-    $db_host = "localhost";
+    $db_host = "db_movie";
     $db_user = "root";
     $db_pass = "123";
 

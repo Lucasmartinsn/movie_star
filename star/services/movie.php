@@ -1,10 +1,8 @@
 <?php
-  require_once("templates/header.php");
-
-  // Verifica se usuário está autenticado
-  require_once("models/Movie.php");
-  require_once("dao/MovieDAO.php");
-  require_once("dao/ReviewDAO.php");
+  require_once "templates/header.php";
+  require_once "models/Movie.php";
+  require_once "dao/MovieDAO.php";
+  require_once "dao/ReviewDAO.php";
 
   // Pegar o id do filme
   $id = filter_input(INPUT_GET, "id");
@@ -108,7 +106,7 @@
       <?php endif; ?>
       <!-- Comentários -->
       <?php foreach($movieReviews as $review): ?>
-        <?php require("templates/user_review.php"); ?>
+        <?php require "templates/user_review.php"; ?>
       <?php endforeach; ?>
       <?php if(count($movieReviews) == 0): ?>
         <p class="empty-list">Não há comentários para este filme ainda...</p>
@@ -117,5 +115,5 @@
   </div>
 </div>
 <?php
-  require_once("templates/footer.php");
+  require_once "templates/footer.php";
 ?>
